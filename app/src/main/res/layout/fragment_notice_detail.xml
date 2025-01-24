@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.noticeManager.NoticeDetailFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_noticeDetail"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:menu="@menu/menu_notice_detail"
+        app:navigationIcon="@drawable/arrow_back_ios_24px"
+        app:title="공지사항"
+        app:titleCentered="true" />
+
+    <TextView
+        android:id="@+id/textView_noticeDetail_noticeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:text="오늘의 공지"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView_noticeDetail_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="300dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="15dp"
+                android:text="반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)반송(반송비 고객 부담, 보낸 주소로 반송)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/gray_color" />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/textView_noticeDetail_noticeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="작성일 : 24년 01월 16일"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+</LinearLayout>

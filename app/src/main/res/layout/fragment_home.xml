@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_home"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:logo="@drawable/main_logo"
+        app:title="" />
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/button_home_inventoryManager"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_color"
+            android:text="재고 관리"
+            android:textColor="@color/white"
+            app:cornerRadius="60dp" />
+
+        <Button
+            android:id="@+id/button_home_noticeManager"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_color"
+            android:text="공지사항 관리"
+            android:textColor="@color/white"
+            app:cornerRadius="60dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/button_home_askManager"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_color"
+            android:text="1:1 문의 관리"
+            android:textColor="@color/white"
+            app:cornerRadius="60dp" />
+
+        <Button
+            android:id="@+id/button_home_notificationManager"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_color"
+            android:text="알림창 관리"
+            android:textColor="@color/white"
+            app:cornerRadius="60dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/button_home_sellOrderManager"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/main_color"
+            android:text="판매/구매 주문 관리"
+            android:textColor="@color/white"
+            app:cornerRadius="60dp" />
+
+        <Button
+            android:id="@+id/button_home_userManager"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="#898080"
+            android:text="회원 관리"
+            android:textColor="@color/white"
+            app:cornerRadius="60dp" />
+    </LinearLayout>
+
+</LinearLayout>

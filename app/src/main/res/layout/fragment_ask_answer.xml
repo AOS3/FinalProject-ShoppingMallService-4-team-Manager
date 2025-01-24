@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.noticeManager.NoticeWriteFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_askAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="@drawable/arrow_back_ios_24px"
+        app:title="1:1 문의 답변"
+        app:titleCentered="true" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_askAnswer_answerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:hint="답변 내용"
+        android:minHeight="300dp"
+        app:boxStrokeColor="@color/main_color"
+        app:counterEnabled="true"
+        app:counterMaxLength="300"
+        app:cursorColor="@color/main_color"
+        app:endIconMode="clear_text"
+        app:helperText=" "
+        app:hintTextColor="@color/main_color"
+        app:placeholderText="답변 내용을 입력해주세요.">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:maxLength="300"
+            android:maxLines="10"
+            android:minHeight="300dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_askAnswer_sendAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/main_color"
+        android:text="보내기"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:cornerRadius="10dp" />
+</LinearLayout>

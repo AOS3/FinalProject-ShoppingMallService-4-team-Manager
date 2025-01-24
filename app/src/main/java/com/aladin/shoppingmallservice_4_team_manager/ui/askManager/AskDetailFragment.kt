@@ -1,0 +1,41 @@
+package com.aladin.shoppingmallservice_4_team_manager.ui.askManager
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.aladin.shoppingmallservice_4_team_manager.databinding.FragmentAskDetailBinding
+import com.aladin.shoppingmallservice_4_team_manager.util.removeFragment
+import dagger.hilt.android.AndroidEntryPoint
+
+
+@AndroidEntryPoint
+class AskDetailFragment : Fragment() {
+
+    private var _fragmentAskDetailBinding: FragmentAskDetailBinding? = null
+    private val fragmentAskDetailBinding get() = _fragmentAskDetailBinding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _fragmentAskDetailBinding =
+            FragmentAskDetailBinding.inflate(layoutInflater, container, false)
+
+        // 툴바
+        settingToolbar()
+
+        return fragmentAskDetailBinding.root
+    }
+
+    // toolBar
+    private fun settingToolbar() {
+        fragmentAskDetailBinding.apply {
+            toolbarAskDetail.setNavigationOnClickListener {
+                removeFragment()
+            }
+        }
+    }
+
+}

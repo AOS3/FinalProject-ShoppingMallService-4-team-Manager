@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.noticeManager.NoticeWriteFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_notificationDetail"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:navigationIcon="@drawable/arrow_back_ios_24px"
+        app:title="보낸 알림 확인하기"
+        app:titleCentered="true" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_notificationDetail_notificationTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:enabled="false"
+        android:hint="알림 제목"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/main_color"
+        app:cursorColor="@color/main_color"
+        app:endIconMode="clear_text"
+        app:helperText=" "
+        app:hintTextColor="@color/main_color"
+        app:placeholderText="알림 제목을 입력해주세요.">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_notificationDetail_notificationContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:enabled="false"
+        android:hint="알림 내용"
+        android:minHeight="400dp"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/main_color"
+        app:cursorColor="@color/main_color"
+        app:endIconMode="clear_text"
+        app:helperText=" "
+        app:hintTextColor="@color/main_color"
+        app:placeholderText="알림 내용을 입력해주세요.">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:gravity="top"
+            android:minHeight="400dp"
+            app:counterMaxLength="200" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textField_notificationDetail_notificationSendDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="10dp"
+        android:text="작성일 : 24년 01월 16일" />
+
+</LinearLayout>
