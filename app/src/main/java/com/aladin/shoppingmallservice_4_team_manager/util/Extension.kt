@@ -54,6 +54,24 @@ fun Fragment.replaceSubFragment(
     }
 }
 
+fun Fragment.replaceSellOrderFragment(
+    fragment: Fragment,
+    isAddToBackStack: Boolean,
+    dataBundle: Bundle? = null,
+    backStackTag: String? = null
+) {
+    // bundle 객체가 null이 아니라면
+    dataBundle?.let {
+        fragment.arguments = it
+    }
+    parentFragmentManager.commit {
+        replace(R.id.fragmentContainerView_sellOrderManager, fragment)
+        if (isAddToBackStack) {
+            addToBackStack(backStackTag)
+        }
+    }
+}
+
 fun Fragment.clearAllBackStack() {
     parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 }
