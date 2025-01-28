@@ -3,6 +3,8 @@ package com.aladin.shoppingmallservice_4_team_manager
 import android.content.Context
 import android.graphics.Rect
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -33,26 +35,23 @@ class MainActivity : AppCompatActivity() {
 //            insets
 //        }
     }
+    //  ANR (Application Not Responding) 오류발생 하여 백그라운드에서 처리
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         ev?.let { event ->
-            // 포커스가 있는 View가 있다면
             currentFocus?.let { focusedView ->
                 val rect = Rect()
-                // 포커스가 있는 View의 화면상의 위치를 rect에 저장
                 focusedView.getGlobalVisibleRect(rect)
 
-                // 터치 지점이 포커스가 있는 View의 영역 내부가 아니라면
                 if (!rect.contains(event.x.toInt(), event.y.toInt())) {
-                    // 키보드 내리기
-                    val inputManager =
-                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                    inputManager.hideSoftInputFromWindow(focusedView.windowToken, 0)
-                    // 포커스 해제
-                    focusedView.clearFocus()
+                    // 키보드를 내리고 포커스를 해제하는 작업을 백그라운드에서 처리
+                    Handler(Looper.getMainLooper()).post {
+                        val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputManager.hideSoftInputFromWindow(focusedView.windowToken, 0)
+                        focusedView.clearFocus()
+                    }
                 }
             }
         }
-        // 기본 터치 이벤트 처리
         return super.dispatchTouchEvent(ev)
     }
 
