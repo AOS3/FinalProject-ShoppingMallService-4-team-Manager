@@ -22,7 +22,7 @@ class OrderManagerFragment : Fragment() {
     private val fragmentOrderManagerBinding get() = _fragmentOrderManagerBinding!!
     private val orderManagerViewModel: OrderManagerViewModel by viewModels()
     private lateinit var orderMangerAdapter: OrderManagerAdapter
-    private lateinit var progressBarDialog:Dialog
+    private lateinit var progressBarDialog: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,15 +50,32 @@ class OrderManagerFragment : Fragment() {
         // 데이터 옵저버
         observeUserOrderData()
 
+        // 전체 데이터 다시 불러오기
+        refreshRecyclerViewData()
+
         return fragmentOrderManagerBinding.root
+    }
+
+    // 전체 데이터 다시 불러오기
+    private fun refreshRecyclerViewData() {
+        parentFragmentManager.setFragmentResultListener(
+            "changeRecyclerView",
+            viewLifecycleOwner
+        ) { _, bundle ->
+            val result = bundle.getString("changeRecyclerView")
+            if (result != null) {
+                orderManagerViewModel.gettingUserOrderInquiryData()
+                fragmentOrderManagerBinding.imageViewOrderManagerDropDownText.text = "배송 전"
+            }
+        }
     }
 
     // Observer
     private fun observeUserOrderData() {
         fragmentOrderManagerBinding.apply {
             orderManagerViewModel.userOrderList.observe(viewLifecycleOwner) { userOrderList ->
-                if(userOrderList.isNotEmpty()) {
-                    orderMangerAdapter.updateData(userOrderList,0)
+                if (userOrderList.isNotEmpty()) {
+                    orderMangerAdapter.updateData(userOrderList, 0)
                 }
             }
             orderManagerViewModel.isLoadUserOrderInquiryData.observe(viewLifecycleOwner) {
@@ -96,7 +113,8 @@ class OrderManagerFragment : Fragment() {
                     "배송 전" -> {
                         orderManagerViewModel.userOrderList.value?.let {
                             orderMangerAdapter.updateData(
-                                it.toList(),0)
+                                it.toList(), 0
+                            )
                         }
                         imageViewOrderManagerDropDownText.text = "배송 전"
                     }
@@ -104,7 +122,8 @@ class OrderManagerFragment : Fragment() {
                     "배송 후" -> {
                         orderManagerViewModel.userOrderList.value?.let {
                             orderMangerAdapter.updateData(
-                                it.toList(),2)
+                                it.toList(), 2
+                            )
                         }
                         imageViewOrderManagerDropDownText.text = "배송 후"
                     }

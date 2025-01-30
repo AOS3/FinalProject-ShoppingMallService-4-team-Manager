@@ -87,6 +87,10 @@ class OrderManagerDetailFragment : Fragment() {
     private fun settingToolbar() {
         fragmentOrderManagerDetailBinding.apply {
             toolbarOrderManagerDetail.setNavigationOnClickListener {
+                val result = Bundle().apply {
+                    putString("changeRecyclerView", "changeRecyclerView")
+                }
+                parentFragmentManager.setFragmentResult("changeRecyclerView", result)
                 removeFragment()
 
             }
