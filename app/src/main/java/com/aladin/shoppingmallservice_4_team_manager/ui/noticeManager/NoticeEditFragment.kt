@@ -48,6 +48,10 @@ class NoticeEditFragment : Fragment() {
         fragmentNoticeEditBinding.apply {
             noticeViewModel.isEditNoticeData.observe(viewLifecycleOwner) { isEdit ->
                 if(isEdit) {
+                    val result = Bundle().apply {
+                        putString("changeRecyclerView","changeRecyclerView")
+                    }
+                    parentFragmentManager.setFragmentResult("changeRecyclerView",result)
                     removeFragment()
                     removeFragment()
                 }
@@ -116,8 +120,7 @@ class NoticeEditFragment : Fragment() {
             if (arguments != null) {
                 textFieldNoticeEditNoticeTitle.editText?.setText(arguments?.getString("title")!!)
                 textFieldNoticeEditNoticeContent.editText?.setText(arguments?.getString("content")!!)
-                textViewNoticeEditNoticeWriteDate.text =
-                    formatOrderTime(arguments?.getString("date")!!.toLong())
+                textViewNoticeEditNoticeWriteDate.text = formatOrderTime(System.currentTimeMillis())
             }
         }
     }

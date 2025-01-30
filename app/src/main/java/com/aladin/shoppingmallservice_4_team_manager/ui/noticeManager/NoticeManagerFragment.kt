@@ -51,7 +51,22 @@ class NoticeManagerFragment : Fragment() {
         // 툴바
         settingToolbar()
 
+        // 전체 데이터 다시 불러오기
+        refreshRecyclerViewData()
+
+
+
         return fragmentNoticeManagerBinding.root
+    }
+
+    // 전체 데이터 다시 불러오기
+    private fun refreshRecyclerViewData() {
+        parentFragmentManager.setFragmentResultListener("changeRecyclerView",viewLifecycleOwner) { _, bundle ->
+            val result = bundle.getString("changeRecyclerView")
+            if (result != null) {
+                noticeViewModel.gettingNoticeInquiryData()
+            }
+        }
     }
 
     // Observer

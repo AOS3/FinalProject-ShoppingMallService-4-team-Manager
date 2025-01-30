@@ -49,4 +49,12 @@ class NoticeRepository @Inject constructor(
             document?.reference?.update("noticeDate", noticeDate)
         }
     }
+
+    // 공지사항 정보 저장
+    suspend fun addNoticeTableData(
+        noticeModel:NoticeModel
+    ) {
+        val collectionReference = firebaseFireStore.collection("NoticeTable")
+        collectionReference.add(noticeModel).await()
+    }
 }
