@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.aladin.shoppingmallservice_4_team_manager.databinding.FragmentNoticeDetailBinding
 import com.aladin.shoppingmallservice_4_team_manager.util.removeFragment
 import com.aladin.shoppingmallservice_4_team_manager.util.replaceMainFragment
@@ -18,6 +20,7 @@ import java.util.Locale
 class NoticeDetailFragment : Fragment() {
     private var _fragmentNoticeDetailBinding: FragmentNoticeDetailBinding? = null
     private val fragmentNoticeDetailBinding get() = _fragmentNoticeDetailBinding!!
+    private val noticeViewModel: NoticeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +35,45 @@ class NoticeDetailFragment : Fragment() {
         // 툴바
         settingToolbar()
 
+        // 공지사항 상태 변경 버튼 클릭 메서드
+        onClickHideAndShowButton()
+
+        // 옵저버
+        observeAddNoticeData()
+
         return fragmentNoticeDetailBinding.root
+    }
+
+    // Observer
+    private fun observeAddNoticeData() {
+        fragmentNoticeDetailBinding.apply {
+            noticeViewModel.isEditNoticeState.observe(viewLifecycleOwner) { isAdd ->
+                if (isAdd) {
+                    Toast.makeText(requireContext(), "상태가 정상적으로 변경되었습니다.", Toast.LENGTH_SHORT)
+                        .show()
+
+                    val result = Bundle().apply {
+                        putString("changeRecyclerView", "changeRecyclerView")
+                    }
+                    parentFragmentManager.setFragmentResult("changeRecyclerView", result)
+                }
+            }
+        }
+    }
+
+    private fun onClickHideAndShowButton() {
+        fragmentNoticeDetailBinding.apply {
+            buttonNoticeDetailNoticeHide.setOnClickListener { changeNoticeState(1) }
+            buttonNoticeDetailNoticeShow.setOnClickListener { changeNoticeState(0) }
+        }
+    }
+
+    private fun changeNoticeState(value: Int) {
+        noticeViewModel.changeNoticeState(
+            arguments?.getString("title")!!,
+            arguments?.getString("date")!!,
+            value
+        )
     }
 
     // settingTextView
@@ -67,7 +108,7 @@ class NoticeDetailFragment : Fragment() {
                         dataBundle.putString("title", arguments?.getString("title")!!)
                         dataBundle.putString("content", arguments?.getString("content")!!)
                         dataBundle.putString("date", arguments?.getString("date")!!)
-                        replaceMainFragment(NoticeEditFragment(), true,dataBundle)
+                        replaceMainFragment(NoticeEditFragment(), true, dataBundle)
                     }
                 }
                 true

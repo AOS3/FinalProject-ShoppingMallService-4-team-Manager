@@ -52,9 +52,28 @@ class NoticeRepository @Inject constructor(
 
     // 공지사항 정보 저장
     suspend fun addNoticeTableData(
-        noticeModel:NoticeModel
+        noticeModel: NoticeModel
     ) {
         val collectionReference = firebaseFireStore.collection("NoticeTable")
         collectionReference.add(noticeModel).await()
+    }
+
+    // 공지사항 상태 변경
+    suspend fun editNoticeTableStateData(
+        noticeTitle: String,
+        noticeDate: String,
+        noticeState: Int
+    ) {
+        val collectionReference = firebaseFireStore.collection("NoticeTable")
+
+        val querySnapshot: QuerySnapshot = collectionReference
+            .whereEqualTo("noticeTitle", noticeTitle)
+            .whereEqualTo("noticeDate", noticeDate)
+            .get()
+            .await()
+
+        querySnapshot.documents.forEach { document ->
+            document?.reference?.update("noticeState", noticeState)
+        }
     }
 }

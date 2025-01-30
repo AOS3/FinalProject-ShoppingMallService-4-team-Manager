@@ -34,6 +34,10 @@ class NoticeViewModel @Inject constructor(
     private val _isAddNoticeData = MutableLiveData<Boolean>(false)
     val isAddNoticeData: LiveData<Boolean> get() = _isAddNoticeData
 
+    // 공지사항 상태변경 상태 확인 값
+    private val _isEditNoticeState = MutableLiveData<Boolean>(false)
+    val isEditNoticeState: LiveData<Boolean> get() = _isEditNoticeState
+
     // 공지사항 데이터 가져오기
     fun gettingNoticeInquiryData() {
         viewModelScope.launch {
@@ -89,11 +93,12 @@ class NoticeViewModel @Inject constructor(
 
     // 공지사항 추가
     fun addNoticeData(
-        noticeTitle:String,
-        noticeContent:String,
+        noticeTitle: String,
+        noticeContent: String,
     ) {
         viewModelScope.launch {
-            val noticeModel = NoticeModel(noticeTitle, noticeContent,System.currentTimeMillis().toString(),0)
+            val noticeModel =
+                NoticeModel(noticeTitle, noticeContent, System.currentTimeMillis().toString(), 0)
 
             val result = runCatching {
                 withContext(Dispatchers.IO) {
@@ -108,6 +113,29 @@ class NoticeViewModel @Inject constructor(
                 .onFailure { error ->
                     Log.e("NoticeViewModel", "addNoticeData Error : $error")
                     _isAddNoticeData.postValue(true)
+                }
+        }
+    }
+
+    // 공지사항 상태 변경
+    fun changeNoticeState(
+        noticeTitle: String,
+        noticeDate: String,
+        noticeState: Int
+    ) {
+        viewModelScope.launch {
+            val result = runCatching {
+                withContext(Dispatchers.IO) {
+                    noticeRepository.editNoticeTableStateData(noticeTitle, noticeDate, noticeState)
+                }
+            }
+
+            result
+                .onSuccess {
+                    _isEditNoticeState.postValue(true)
+                }
+                .onFailure {
+                    _isEditNoticeState.postValue(false)
                 }
         }
     }

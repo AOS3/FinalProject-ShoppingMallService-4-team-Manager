@@ -1,6 +1,7 @@
 package com.aladin.shoppingmallservice_4_team_manager.adapter
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -38,6 +39,14 @@ class NoticeAdapter(
             itemNoticeBinding.apply {
                 textViewNoticeItemTitle.text = data.noticeTitle
                 textViewNoticeItemDate.text = formatOrderTime(data.noticeDate.toLong())
+                if (data.noticeState == 0) {
+                    textViewNoticeItemTitle.setTextColor(Color.BLACK)
+                    textViewNoticeItemDate.setTextColor(Color.BLACK)
+                }else {
+                    textViewNoticeItemTitle.setTextColor(Color.GRAY)
+                    textViewNoticeItemDate.setTextColor(Color.GRAY)
+                }
+
             }
 
             itemView.setOnClickListener {
