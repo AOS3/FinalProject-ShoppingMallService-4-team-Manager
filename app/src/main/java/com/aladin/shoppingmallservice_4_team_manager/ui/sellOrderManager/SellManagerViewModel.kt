@@ -154,6 +154,7 @@ class SellManagerViewModel @Inject constructor(
             0 -> (originalPrice * 0.7).toInt()
             1 -> (originalPrice * 0.5).toInt()
             2 -> (originalPrice * 0.3).toInt()
+            3 -> (originalPrice * 0.0).toInt()
             else -> originalPrice
         }
     }
@@ -231,6 +232,7 @@ class SellManagerViewModel @Inject constructor(
             0 -> "상"
             1 -> "중"
             2 -> "하"
+            3 -> "매입 불가"
             else -> "알 수 없음"
         }
     }

@@ -178,7 +178,7 @@
                 <View
                     android:id="@+id/divider"
                     android:layout_width="1dp"
-                    android:layout_height="190dp"
+                    android:layout_height="250dp"
                     android:background="@color/black"
                     android:backgroundTint="@null"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -191,12 +191,13 @@
                     android:id="@+id/button_sell_manager_detail_state1_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="40dp"
                     android:layout_marginEnd="10dp"
                     android:backgroundTint="@color/orange_color"
                     android:text="품질 검수 중"
                     app:cornerRadius="10dp"
                     app:layout_constraintEnd_toStartOf="@+id/divider"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/button_sell_manager_detail_state2_high" />
 
@@ -238,6 +239,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/divider"
                     app:layout_constraintTop_toBottomOf="@+id/button_sell_manager_detail_state2_middle" />
+
+                <Button
+                    android:id="@+id/button_sell_manager_detail_state2_no"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/gray_color"
+                    android:text="매입 불가"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/divider"
+                    app:layout_constraintTop_toBottomOf="@+id/button_sell_manager_detail_state2_low" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

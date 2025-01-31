@@ -13,6 +13,7 @@ import com.aladin.shoppingmallservice_4_team_manager.Model.SellingInquiryModel
 import com.aladin.shoppingmallservice_4_team_manager.R
 import com.aladin.shoppingmallservice_4_team_manager.databinding.FragmentSellManagerDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -93,6 +94,10 @@ class SellManagerDetailFragment : Fragment() {
             buttonSellManagerDetailState2Low.setOnClickListener {
                 updateApprovalAndSaveInventory(2)
             }
+
+            buttonSellManagerDetailState2No.setOnClickListener {
+                updateApprovalAndSaveInventory(3)
+            }
         }
     }
 
@@ -104,9 +109,11 @@ class SellManagerDetailFragment : Fragment() {
             // 최종 가격 업데이트 후, Firestore 업데이트 완료 시 최신 데이터 가져오기
             sellingCartViewModel.updateFinalPriceAndWait(inquiry.documentId, choiceQuality) { updatedInquiry ->
                 updatedInquiry?.let {
-                    sellingCartViewModel.insertUsedBookInventory(it)
                     sellingCartViewModel.insertNotification(it)
-                    sellingCartViewModel.insertBookCount(it)
+                    if(choiceQuality == 0 || choiceQuality == 1 || choiceQuality == 2) {
+                        sellingCartViewModel.insertUsedBookInventory(it)
+                        sellingCartViewModel.insertBookCount(it)
+                    }
                 }
             }
         }
@@ -131,16 +138,55 @@ class SellManagerDetailFragment : Fragment() {
             textViewSellManagerDetailAccount.text = "계좌 번호 : ${inquiry.sellingInquiryBankAccountNumber}"
 
             val priceText = if (inquiry.sellingInquiryApprovalResult == 2) {
-                "판매가: ${inquiry.sellingInquiryPrice}원 -> ${inquiry.sellingInquiryFinalPrice}원"
+                "판매가: ${formatNumber(inquiry.sellingInquiryPrice)}원 -> ${formatNumber(inquiry.sellingInquiryFinalPrice)}원"
             } else {
-                "예상 판매가: ${inquiry.sellingInquiryPrice}원"
+                "예상 판매가: ${formatNumber(inquiry.sellingInquiryPrice)}원"
             }
             textViewSellManagerDetailPrice.text = priceText
 
             textViewSellManagerDetailDate.text = "등록 날짜: ${formatDate(inquiry.sellingInquiryTime)}"
             textViewSellManagerDetailState.text = getStateText(inquiry.sellingInquiryApprovalResult)
             textViewSellManagerDetailState.setTextColor(getStateColor(inquiry.sellingInquiryApprovalResult, root.context))
+
+            // 승인 상태에 따른 버튼 활성화/비활성화 처리
+            when (inquiry.sellingInquiryApprovalResult) {
+                0 -> {
+                    setButtonState(buttonSellManagerDetailState1Start, true)
+                    setButtonState(buttonSellManagerDetailState2High, false)
+                    setButtonState(buttonSellManagerDetailState2Middle, false)
+                    setButtonState(buttonSellManagerDetailState2Low, false)
+                    setButtonState(buttonSellManagerDetailState2No, false)
+                }
+                1 -> {
+                    setButtonState(buttonSellManagerDetailState1Start, false)
+                    setButtonState(buttonSellManagerDetailState2High, true)
+                    setButtonState(buttonSellManagerDetailState2Middle, true)
+                    setButtonState(buttonSellManagerDetailState2Low, true)
+                    setButtonState(buttonSellManagerDetailState2No, true)
+                }
+                2 -> {
+                    setButtonState(buttonSellManagerDetailState1Start, false)
+                    setButtonState(buttonSellManagerDetailState2High, false)
+                    setButtonState(buttonSellManagerDetailState2Middle, false)
+                    setButtonState(buttonSellManagerDetailState2Low, false)
+                    setButtonState(buttonSellManagerDetailState2No, false)
+                }
+            }
         }
+    }
+
+    // 버튼 활성화/비활성화에 따른 alpha 설정 추가
+    private fun setButtonState(button: View, isEnabled: Boolean) {
+        button.isEnabled = isEnabled
+
+//        if (button is androidx.appcompat.widget.AppCompatButton) {
+//            button.setTextColor(ContextCompat.getColor(button.context, R.color.white))
+//        }
+    }
+
+    // 세 자리마다 콤마 추가하는 함수
+    private fun formatNumber(number: Int): String {
+        return NumberFormat.getNumberInstance(Locale.US).format(number)
     }
 
     // 품질 상태 텍스트 변환
@@ -149,6 +195,7 @@ class SellManagerDetailFragment : Fragment() {
             0 -> "상"
             1 -> "중"
             2 -> "하"
+            3 -> "매입 불가"
             else -> "오류"
         }
     }

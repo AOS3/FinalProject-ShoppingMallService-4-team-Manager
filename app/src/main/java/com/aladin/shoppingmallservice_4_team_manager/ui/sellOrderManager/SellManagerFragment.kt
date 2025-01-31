@@ -17,6 +17,7 @@ import com.aladin.shoppingmallservice_4_team_manager.databinding.RowBookSellMana
 import com.aladin.shoppingmallservice_4_team_manager.util.replaceMainFragment
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -97,6 +98,11 @@ class SellManagerFragment : Fragment() {
         }
     }
 
+    // 세 자리마다 콤마 추가하는 함수
+    private fun formatNumber(number: Int): String {
+        return NumberFormat.getNumberInstance(Locale.US).format(number)
+    }
+
     // RecyclerView 설정 메서드
     private fun settingRecyclerView() {
         adapter = RecyclerSellManagerAdapter(emptyList()).apply {
@@ -167,6 +173,7 @@ class SellManagerFragment : Fragment() {
                     0 -> "상"
                     1 -> "중"
                     2 -> "하"
+                    3 -> "매입 불가"
                     else -> "오류"
                 }
 
@@ -176,6 +183,7 @@ class SellManagerFragment : Fragment() {
                         0 -> "상"
                         1 -> "중"
                         2 -> "하"
+                        3 -> "매입 불가"
                         else -> "오류"
                     }
                     "품질: $quality -> $staffQuality"
@@ -187,9 +195,9 @@ class SellManagerFragment : Fragment() {
                 rowBookSellManagerBinding.textViewSellManagerAuthor.text = item.sellingInquiryBookAuthor
                 rowBookSellManagerBinding.textViewSellManagerCustomerNumber.text = "회원 번호 : ${item.sellingInquiryUserToken}"
                 val priceText = if (item.sellingInquiryApprovalResult == 2) {
-                    "판매가 : ${item.sellingInquiryPrice}원 -> ${item.sellingInquiryFinalPrice}원"
+                    "판매가 : ${formatNumber(item.sellingInquiryPrice)}원 -> ${formatNumber(item.sellingInquiryFinalPrice)}원"
                 } else {
-                    "예상 판매가 : ${item.sellingInquiryPrice}원"
+                    "예상 판매가 : ${formatNumber(item.sellingInquiryPrice)}원"
                 }
                 rowBookSellManagerBinding.textViewSellManagerPrice.text = priceText
 
