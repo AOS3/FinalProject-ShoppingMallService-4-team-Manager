@@ -13,6 +13,7 @@ import com.google.firebase.firestore.ListenerRegistration
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.math.roundToInt
 
 @HiltViewModel
 class SellManagerViewModel @Inject constructor(
@@ -117,9 +118,9 @@ class SellManagerViewModel @Inject constructor(
     // 정상가 계산 함수
     private fun calculateOriginalPrice(estimatedPrice: Int, quality: Int): Int {
         return when (quality) {
-            0 -> (estimatedPrice / 0.7).toInt()
-            1 -> (estimatedPrice / 0.5).toInt()
-            2 -> (estimatedPrice / 0.3).toInt()
+            0 -> (estimatedPrice / 0.7).roundToInt()
+            1 -> (estimatedPrice / 0.5).roundToInt()
+            2 -> (estimatedPrice / 0.3).roundToInt()
             else -> 0
         }
     }
@@ -151,10 +152,10 @@ class SellManagerViewModel @Inject constructor(
     // OriginalPrice를 기반으로 최종 가격 계산
     private fun calculateFinalPrice(originalPrice: Int, quality: Int): Int {
         return when (quality) {
-            0 -> (originalPrice * 0.7).toInt()
-            1 -> (originalPrice * 0.5).toInt()
-            2 -> (originalPrice * 0.3).toInt()
-            3 -> (originalPrice * 0.0).toInt()
+            0 -> (originalPrice * 0.7).roundToInt()
+            1 -> (originalPrice * 0.5).roundToInt()
+            2 -> (originalPrice * 0.3).roundToInt()
+            3 -> (originalPrice * 0.0).roundToInt()
             else -> originalPrice
         }
     }
