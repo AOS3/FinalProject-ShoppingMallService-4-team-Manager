@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.aladin.shoppingmallservice_4_team_manager.Model.SellingInquiryModel
+import com.aladin.shoppingmallservice_4_team_manager.model.SellingInquiryModel
 import com.aladin.shoppingmallservice_4_team_manager.R
 import com.aladin.shoppingmallservice_4_team_manager.databinding.FragmentSellManagerBinding
 import com.aladin.shoppingmallservice_4_team_manager.databinding.RowBookSellManagerBinding

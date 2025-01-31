@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.aladin.shoppingmallservice_4_team_manager.model.BookCountModel
-import com.aladin.shoppingmallservice_4_team_manager.Model.NotificationModel
-import com.aladin.shoppingmallservice_4_team_manager.Model.SellingInquiryModel
-import com.aladin.shoppingmallservice_4_team_manager.Model.UsedBookInventoryModel
+import com.aladin.shoppingmallservice_4_team_manager.model.NotificationModel
+import com.aladin.shoppingmallservice_4_team_manager.model.SellingInquiryModel
+import com.aladin.shoppingmallservice_4_team_manager.model.UsedBookInventoryModel
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import dagger.hilt.android.lifecycle.HiltViewModel

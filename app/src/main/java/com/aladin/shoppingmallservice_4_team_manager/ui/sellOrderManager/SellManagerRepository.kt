@@ -1,11 +1,10 @@
 package com.aladin.shoppingmallservice_4_team_manager.ui.sellOrderManager
 
 import com.aladin.shoppingmallservice_4_team_manager.model.BookCountModel
-import com.aladin.shoppingmallservice_4_team_manager.Model.NotificationModel
-import com.aladin.shoppingmallservice_4_team_manager.Model.SellingInquiryModel
-import com.aladin.shoppingmallservice_4_team_manager.Model.UsedBookInventoryModel
+import com.aladin.shoppingmallservice_4_team_manager.model.NotificationModel
+import com.aladin.shoppingmallservice_4_team_manager.model.SellingInquiryModel
+import com.aladin.shoppingmallservice_4_team_manager.model.UsedBookInventoryModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 import javax.inject.Singleton

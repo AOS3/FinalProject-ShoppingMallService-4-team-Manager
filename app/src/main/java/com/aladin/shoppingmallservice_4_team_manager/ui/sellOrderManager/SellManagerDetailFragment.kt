@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import com.aladin.shoppingmallservice_4_team_manager.Model.SellingInquiryModel
+import com.aladin.shoppingmallservice_4_team_manager.model.SellingInquiryModel
 import com.aladin.shoppingmallservice_4_team_manager.R
 import com.aladin.shoppingmallservice_4_team_manager.databinding.FragmentSellManagerDetailBinding
 import dagger.hilt.android.AndroidEntryPoint

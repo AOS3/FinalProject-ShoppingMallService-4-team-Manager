@@ -1,4 +1,4 @@
-package com.aladin.shoppingmallservice_4_team_manager.Model
+package com.aladin.shoppingmallservice_4_team_manager.model
 
 import com.google.firebase.firestore.DocumentId
 import com.google.firebase.firestore.Exclude

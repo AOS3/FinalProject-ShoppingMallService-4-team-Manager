@@ -1,4 +1,4 @@
-package com.aladin.shoppingmallservice_4_team_manager.Model
+package com.aladin.shoppingmallservice_4_team_manager.model
 
 data class UsedBookInventoryModel (
     val usedBookSellingPrice : Int = 0,
