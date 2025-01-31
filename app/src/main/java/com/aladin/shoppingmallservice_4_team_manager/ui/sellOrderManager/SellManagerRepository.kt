@@ -1,6 +1,6 @@
 package com.aladin.shoppingmallservice_4_team_manager.ui.sellOrderManager
 
-import com.aladin.shoppingmallservice_4_team_manager.Model.BookCountModel
+import com.aladin.shoppingmallservice_4_team_manager.model.BookCountModel
 import com.aladin.shoppingmallservice_4_team_manager.Model.NotificationModel
 import com.aladin.shoppingmallservice_4_team_manager.Model.SellingInquiryModel
 import com.aladin.shoppingmallservice_4_team_manager.Model.UsedBookInventoryModel
