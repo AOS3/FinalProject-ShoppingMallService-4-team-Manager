@@ -48,6 +48,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="400"
         android:hint="공지사항 내용"
         android:minHeight="400dp"
         app:boxStrokeColor="@color/main_color"
@@ -61,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
+            app:counterMaxLength="400"
             android:minHeight="400dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
