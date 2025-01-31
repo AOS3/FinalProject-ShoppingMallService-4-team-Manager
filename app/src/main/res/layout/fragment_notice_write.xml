@@ -16,72 +16,84 @@
         app:title="공지사항 작성"
         app:titleCentered="true" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField_noticeWrite_noticeTitle"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:hint="공지사항 제목"
-        app:boxStrokeColor="@color/main_color"
-        app:cursorColor="@color/main_color"
-        app:endIconMode="clear_text"
-        app:helperText=" "
-        app:hintTextColor="@color/main_color"
-        app:placeholderText="공지사항 제목을 입력해주세요.">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical"
+            android:layout_height="match_parent">
 
-    <com.google.android.material.divider.MaterialDivider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_noticeWrite_noticeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="공지사항 제목"
+                app:boxStrokeColor="@color/main_color"
+                app:cursorColor="@color/main_color"
+                app:endIconMode="clear_text"
+                app:helperText=" "
+                app:hintTextColor="@color/main_color"
+                app:placeholderText="공지사항 제목을 입력해주세요.">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField_noticeWrite_noticeContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="400"
-        android:hint="공지사항 내용"
-        android:minHeight="400dp"
-        app:boxStrokeColor="@color/main_color"
-        app:cursorColor="@color/main_color"
-        app:endIconMode="clear_text"
-        app:helperText=" "
-        app:hintTextColor="@color/main_color"
-        app:placeholderText="공지사항 내용을 입력해주세요.">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="top"
-            app:counterMaxLength="400"
-            android:minHeight="400dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" />
 
-    <TextView
-        android:id="@+id/textField_noticeWrite_noticeWriteDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="10dp"
-        android:text="작성일 : 24년 01월 16일" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textField_noticeWrite_noticeContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:hint="공지사항 내용"
+                android:minHeight="400dp"
+                app:boxStrokeColor="@color/main_color"
+                app:counterEnabled="true"
+                app:counterMaxLength="400"
+                app:cursorColor="@color/main_color"
+                app:endIconMode="clear_text"
+                app:helperText=" "
+                app:hintTextColor="@color/main_color"
+                app:placeholderText="공지사항 내용을 입력해주세요.">
 
-    <Button
-        android:id="@+id/button_noticeWrite_writeNoticeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/main_color"
-        android:text="등록하기"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:cornerRadius="10dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:minHeight="400dp"
+                    app:counterMaxLength="400" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textField_noticeWrite_noticeWriteDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="10dp"
+                android:text="작성일 : 24년 01월 16일" />
+
+            <Button
+                android:id="@+id/button_noticeWrite_writeNoticeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/main_color"
+                android:text="등록하기"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
