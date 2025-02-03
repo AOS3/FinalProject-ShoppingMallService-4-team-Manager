@@ -31,7 +31,7 @@
             android:backgroundTint="@color/main_color"
             android:text="재고 관리"
             android:textColor="@color/white"
-            app:cornerRadius="60dp" />
+            app:cornerRadius="20dp" />
 
         <Button
             android:id="@+id/button_home_noticeManager"
@@ -43,7 +43,7 @@
             android:backgroundTint="@color/main_color"
             android:text="공지사항 관리"
             android:textColor="@color/white"
-            app:cornerRadius="60dp" />
+            app:cornerRadius="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -59,10 +59,11 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/main_color"
+            android:backgroundTint="#898080"
+            android:enabled="false"
             android:text="1:1 문의 관리"
             android:textColor="@color/white"
-            app:cornerRadius="60dp" />
+            app:cornerRadius="20dp" />
 
         <Button
             android:id="@+id/button_home_notificationManager"
@@ -71,10 +72,11 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:backgroundTint="@color/main_color"
+            android:backgroundTint="#898080"
+            android:enabled="false"
             android:text="알림창 관리"
             android:textColor="@color/white"
-            app:cornerRadius="60dp" />
+            app:cornerRadius="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -93,7 +95,7 @@
             android:backgroundTint="@color/main_color"
             android:text="판매/구매 주문 관리"
             android:textColor="@color/white"
-            app:cornerRadius="60dp" />
+            app:cornerRadius="20dp" />
 
         <Button
             android:id="@+id/button_home_userManager"
@@ -105,7 +107,7 @@
             android:backgroundTint="#898080"
             android:text="회원 관리"
             android:textColor="@color/white"
-            app:cornerRadius="60dp" />
+            app:cornerRadius="20dp" />
     </LinearLayout>
 
 </LinearLayout>
